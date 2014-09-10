@@ -1,0 +1,12 @@
+<h1>Envelope Settings</h1>
+
+<%= render 'form' %>
+<p>
+<%= link_to 'Delete', @envelope, method: :delete, class: 'btn btn-lg btn-default', data: { confirm: 'Are you sure?' } %>
+<!--<%= link_to 'Show', @envelope, class: 'btn btn-lg btn-info' %>-->
+<p />
+<hr />
+<br />
+<br />
+<h2>Create Transaction</h2>
+<%= render 'trans' %>

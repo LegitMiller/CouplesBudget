@@ -1,0 +1,47 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<br />
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">@</div>
+  <%= f.email_field :email, autofocus: true, :class => "input-lg form-control", "placeholder" => "financially@free.com" %>
+  </div>
+</div>
+  
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+  
+  <div><i>(leave blank if you don't want to change it)</i><br /></div>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">@</div>
+    <%= f.password_field :password, autocomplete: "off", :class => "input-lg form-control", "placeholder" => "new password" %>
+    </div>
+  </div>
+
+  
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">@</div>
+    <%= f.password_field :password_confirmation, autocomplete: "off", :class => "input-lg form-control", "placeholder" => "new password again" %>
+    </div>
+  </div>
+  <div><i>(we need your current password to confirm your changes)</i><br /></div>
+  
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">@</div>
+    <%= f.password_field :current_password, autocomplete: "off", :class => "input-lg form-control", "placeholder" => "old password" %></div></div>
+
+  <div><%= f.submit "Update", :class=> "btn btn-info btn-lg pull-right" %></div>
+<% end %>
+<br />
+<br />
+<h3>Unhappy?</h3>
+
+<p><%= button_to "Cancel my account", registration_path(resource_name), :class=> "btn btn-default btn-lg", data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+
+

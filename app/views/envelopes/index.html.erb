@@ -1,0 +1,52 @@
+
+<center>
+  <h1 style="text-align:left;">$<%= number_with_delimiter(@total_cash, :delimiter => ',') %></h1><br />
+</center>
+
+<%= form_tag url_for(:controller => 'envelopes', :action => 'modcash'), :method => 'post' do %>
+
+  <%= text_field_tag "cash", params[:cash], :autofocus=> "true", :class => "input-lg","placeholder" => "$" %><!--,"style"=>"width:205px"-->
+  <%= submit_tag(value = "Income", {class: 'btn btn-warning btn-lg pull-right'})%>
+
+  <br />
+<br />
+
+  <div class="media">
+    <div class="media-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Envelope</th>
+            <th><center>Cash</center></th>
+            <th class="text-right"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% current_user.envelopes.each do |envelope| %>
+            <tr>
+
+              <td><%= link_to envelope.name, edit_envelope_path(envelope), class: 'btn btn-default btn-lg' %></td>
+              <!--<td><%= envelope.color %></td>
+              <td><%= envelope.icon %></td>
+              <td><%= envelope.precent %></td>-->
+              <td><center><%= number_with_delimiter(envelope.cash, :delimiter => ',') %></center></td>
+              <!--<td><%= envelope.user_id %></td>-->
+              <td class="text-right"><%= submit_tag(value = "Expense", {class: 'btn btn-info btn-lg', :onclick=> "value=#{envelope.id}"})%></td>
+              <!--<td><%= link_to 'Edit', edit_envelope_path(envelope), class: 'btn btn-default btn-success' %></td>-->
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<% end %>
+<br />
+<br />
+<hr />
+
+<p>
+  <%= link_to "Clear Cash", {:controller => "envelopes", :action => "clear"}, class: 'btn btn-default' %>
+  <%= link_to 'New Envelope', new_envelope_path, class: 'btn btn-default pull-right' %>
+</p>

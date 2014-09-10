@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  color: MyString
+  icon: MyString
+  precent: 1
+  cash: 1
+  user_id: 1
+
+two:
+  name: MyString
+  color: MyString
+  icon: MyString
+  precent: 1
+  cash: 1
+  user_id: 1

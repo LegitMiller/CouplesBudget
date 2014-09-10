@@ -1,0 +1,53 @@
+<%= form_for [@envelope, @envelope.transactions.build] do |f| %>
+
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">N </div>
+    <%= f.text_field :name, :class => "input-lg form-control", "placeholder" => "expense name"  %>
+    </div>
+    </div>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">$ </div>
+    <%= f.text_field :cash, :class => "input-lg form-control", "placeholder" => "cost"  %>
+</div>
+</div>
+  <p>
+    <%= f.submit "Record Expense", :class=> "btn btn-info btn-lg pull-right"%>
+  </p>
+<% end %>
+<br />
+<br />
+<hr />
+<br />
+<br />
+<h2>History</h2>
+<div class="media">
+  <div class="media-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Transaction</th>
+          <th>Cost</th>
+          <th><center> </center></th>
+          <th class="text-right"> </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @envelope.transactions('created_at DESC').reverse.each do |transaction|%>
+          <tr>
+            <%= form_for [@envelope, @envelope.transactions.build] do |f| %>
+              <% if !transaction.name.blank? %>
+                <td><%= f.text_field :name, "value" => transaction.name,"placeholder" => "expense name", "style"=>"width:92px"  %></td>
+                <td><%= f.text_field :cash, "value"=> number_with_delimiter(transaction.cash, :delimiter => ','), "placeholder" => "cost", "style"=>"width:50px"  %></td>
+                <td><center><%= link_to "Remove", envelope_transaction_path(@envelope, transaction), method: :delete, :class => "btn btn-default btn-xs" %></center></td>
+                <td class="text-right"><%= f.submit "Submit", :class=> "btn btn-info btn-xs", :onclick=> "value=#{transaction.id}"%></td>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

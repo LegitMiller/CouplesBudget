@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @envelope.name %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @envelope.color %>
+</p>
+
+<p>
+  <strong>Icon:</strong>
+  <%= @envelope.icon %>
+</p>
+
+<p>
+  <strong>Precent:</strong>
+  <%= @envelope.precent %>
+</p>
+
+<p>
+  <strong>Cash:</strong>
+  <%= @envelope.cash %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @envelope.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_envelope_path(@envelope) %> |
+<%= link_to 'Back', envelopes_path %>
+<%= link_to 'Destroy', @envelope, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<%= render 'trans' %>

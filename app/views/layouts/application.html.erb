@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CouplesBudget</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class = "container">
+	<ul class = "nav nav-tabs">
+		<li><%= image_tag "hearts.png" %></li>
+		<li><%= link_to "CouplesBudget", envelopes_path %></li>
+		<li class = "pull-right"><%= link_to "Logout", :destroy_user_session, method: :delete %></li>
+		<li class = "pull-right"><%= link_to "Account", edit_user_registration_path %></li>
+	</ul>
+
+	<%= yield %>
+	<br />
+	<div class ="notice"><%= notice %></div>
+	<div class ="alert"><%= alert %></div>
+
+</div>
+
+</body>
+</html>
