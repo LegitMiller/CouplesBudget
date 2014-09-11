@@ -12,7 +12,7 @@
       </thead>
 
       <tbody>
-        <% @envelope.transactions('created_at DESC').reverse.each do |transaction|%>
+        <% @envelope.transactions(:order=>'DATE(created_at) DESC').reverse.each do |transaction|%>
           <tr>
             <%= form_for [@envelope, @envelope.transactions.build] do |f| %>
               <% if !transaction.name.blank? %>
