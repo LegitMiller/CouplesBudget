@@ -5,7 +5,7 @@
 
 <%= form_tag url_for(:controller => 'envelopes', :action => 'modcash'), :method => 'post' do %>
 
-  <%= text_field_tag "cash", params[:cash], :autofocus=> "true", :class => "input-lg","placeholder" => "$","style"=>"width:200px", "type"=>"number" %>
+  <%= text_field_tag "cash", params[:cash], :autofocus=> "true", :class => "input-lg","placeholder" => "$","style"=>"width:180px", "type"=>"number" %>
   <%= submit_tag(value = "Income", {class: 'btn btn-warning btn-lg pull-right'})%>
 
 
