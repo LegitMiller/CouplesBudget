@@ -1,14 +1,14 @@
 
 <center>
-  <h1 style="text-align:left;">$<%= number_with_delimiter(@total_cash, :delimiter => ',') %></h1><br />
+  <h1 style="text-align:left;">$<%= number_with_delimiter(@total_cash, :delimiter => ',') %></h1>
 </center>
 
 <%= form_tag url_for(:controller => 'envelopes', :action => 'modcash'), :method => 'post' do %>
 
-  <%= text_field_tag "cash", params[:cash], :autofocus=> "true", :class => "input-lg","placeholder" => "$" %><!--,"style"=>"width:205px"-->
+  <%= text_field_tag "cash", params[:cash], :autofocus=> "true", :class => "input-lg","placeholder" => "$","style"=>"width:200px", "type"=>"number" %>
   <%= submit_tag(value = "Income", {class: 'btn btn-warning btn-lg pull-right'})%>
 
-  <br />
+
 <br />
 
   <div class="media">
@@ -17,20 +17,20 @@
         <thead>
           <tr>
             <th>Envelope</th>
-            <th><center>Cash</center></th>
+            <th><center>$</center></th>
             <th class="text-right"></th>
           </tr>
         </thead>
 
         <tbody>
           <% current_user.envelopes.each do |envelope| %>
-            <tr>
+            <tr class=<%=envelope.color%>>
 
-              <td><%= link_to envelope.name, edit_envelope_path(envelope), class: 'btn btn-default btn-lg' %></td>
+              <td><%= link_to envelope.name, edit_envelope_path(envelope), class: 'btn btn-default btn-lg', "data-no-turbolink"=>"true" %></td>
               <!--<td><%= envelope.color %></td>
               <td><%= envelope.icon %></td>
               <td><%= envelope.precent %></td>-->
-              <td><center><%= number_with_delimiter(envelope.cash, :delimiter => ',') %></center></td>
+              <td><H4><center><%= number_with_delimiter(envelope.cash, :delimiter => ',') %></center></H4></td>
               <!--<td><%= envelope.user_id %></td>-->
               <td class="text-right"><%= submit_tag(value = "Expense", {class: 'btn btn-info btn-lg', :onclick=> "value=#{envelope.id}"})%></td>
               <!--<td><%= link_to 'Edit', edit_envelope_path(envelope), class: 'btn btn-default btn-success' %></td>-->
@@ -42,7 +42,7 @@
   </div>
 
 <% end %>
-<br />
+
 <br />
 <hr />
 

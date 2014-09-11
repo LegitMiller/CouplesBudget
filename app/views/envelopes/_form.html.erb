@@ -17,7 +17,42 @@
     <%= f.text_field :name, :class => "input-lg form-control", "placeholder" => "name" %>
     </div>
   </div>
+  
+  <!--onclick="<%=render'newtrans'%>"-->
+  
   <!--<div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">C </div>
+        <div class="form-control">
+          <%= f.radio_button(:color, "success", "class"=>"inlineRadioOptions") %>
+          <%= label(:color_success, "Green", "class"=>"radio-inline") %>
+        </div>
+        <div class="form-control">
+          <%= f.radio_button(:color, "warning", "class"=>"inlineRadioOptions") %>
+          <%= label(:color_warning, "Yellow", "class"=>"radio-inline") %>
+        </div>
+        <div class="form-control">
+          <%= f.radio_button(:color, "info", "class"=>"inlineRadioOptions") %>
+          <%= label(:color_info, "Blue", "class"=>"radio-inline") %>
+        </div>
+        <div class="form-control">
+          <%= f.radio_button(:color, "danger", "class"=>"inlineRadioOptions")%>
+          <%= label(:color_danger, "Red", "class"=>"radio-inline") %>
+        </div>
+        <div class="form-control">
+          <%= f.radio_button(:color, "active", "class"=>"inlineRadioOptions" )%>
+          <%= label(:color_active, "Grey", "class"=>"radio-inline") %>
+        </div>   
+    </div>
+  </div>-->
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">C </div>
+        <b><%= f.select :color, options_for_select([["Green", "success"], ["Blue", "info"], ["Yellow", "warning"], ["Red", "danger"], ["Grey", "active"]], @envelope.color),{}, { :class => 'form-control' } %></b>
+    </div>
+  </div>
+ <!--
+  <div class="form-group">
     <div class="input-group">
       <div class="input-group-addon">C </div>
     <%= f.text_field :color, :class => "input-lg form-control", "placeholder" => "color"  %>

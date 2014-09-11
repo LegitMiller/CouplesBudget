@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   get "envelopes_clear" => "envelopes#clear"
 
-  get "edittrans"=>"envelopes#edittrans"
+  #get "edittrans"=>"envelopes#edittrans"
 
   resources :envelopes do 
     resources :transactions

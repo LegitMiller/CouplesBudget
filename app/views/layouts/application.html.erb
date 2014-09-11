@@ -10,8 +10,8 @@
 
 <div class = "container">
 	<ul class = "nav nav-tabs">
-		<li><%= image_tag "hearts.png" %></li>
-		<li><%= link_to "CouplesBudget", envelopes_path %></li>
+		<li><%= link_to(image_tag("hearts.png"), envelopes_path, "style"=>"padding:0px") %></li>
+		<!--<li><%= link_to "CouplesBudget", envelopes_path %></li>-->
 		<li class = "pull-right"><%= link_to "Logout", :destroy_user_session, method: :delete %></li>
 		<li class = "pull-right"><%= link_to "Account", edit_user_registration_path %></li>
 	</ul>

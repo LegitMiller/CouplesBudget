@@ -121,12 +121,17 @@ class EnvelopesController < ApplicationController
         redirect_to root_path, notice: 'Income distributed to all envelopes.'
       end
     else
-      if @addmoney.blank?
+      if @addmoney.blank? || @addmoney.to_i == 0
         redirect_to root_path, notice: 'No expense applied to envelope. Please input amount.'
       else
         @envelope = Envelope.find_by_id(params[:commit])
         if @envelope.user_id == current_user.id
           @envelope.update_attributes :cash => @envelope.cash - @addmoney.to_i
+
+          ###CREATE A NEW TRANSACTION
+          @transaction = @envelope.transactions.build(:name => "?", :cash => @addmoney.to_i)#(transaction_params)#(params[:transaction])
+          @transaction.save
+      
           redirect_to root_path, notice: 'Expense applied to envelope.'
         else
           redirect_to root_path, alert: 'Envelope unmodified', notice: 'Envelopes can only be modified by their creator.'
