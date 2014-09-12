@@ -23,6 +23,10 @@
         </thead>
 
         <tbody>
+
+  
+
+
           <% current_user.envelopes(:order=>'DATE(created_at) DESC').reverse.each do |envelope| %>
             <tr class=<%=envelope.color%>>
 
