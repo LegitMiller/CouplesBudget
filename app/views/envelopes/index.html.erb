@@ -23,7 +23,7 @@
         </thead>
 
         <tbody>
-          <% current_user.envelopes(:order=>'DATE(created_at) DESC').reverse.each do |envelope| %>
+          <% current_user.envelopes.find(:all, :order=>"created_at DESC", :limit=>20).reverse.each do |envelope| %>
             <tr class=<%=envelope.color%>>
 
               <td><%= link_to envelope.name, edit_envelope_path(envelope), class: 'btn btn-default btn-lg', "data-no-turbolink"=>"true" %></td>
