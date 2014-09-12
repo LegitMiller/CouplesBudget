@@ -16,8 +16,8 @@
           <tr>
             <%= form_for [@envelope, @envelope.transactions.build] do |f| %>
               <% if !transaction.name.blank? %>
-                <td><%= f.text_field :name, "value" => transaction.name,"placeholder" => "expense name", "style"=>"width:95px"  %></td>
-                <td><%= f.text_field :cash, "value"=> number_with_delimiter(transaction.cash, :delimiter => ','), "placeholder" => "cost", "style"=>"width:40px"  %></td>
+                <td><%= f.text_field :name, "value" => transaction.name,"placeholder" => "expense name", "style"=>"width:90px"  %></td>
+                <td><%= f.text_field :cash, "value"=> number_with_delimiter(transaction.cash, :delimiter => ','), "placeholder" => "cost", "style"=>"width:45px", "type"=>"number" %></td>
                 <td><center><%= link_to(image_tag("trash.png", size: "18x20", alt: "Remove", "style"=>"padding:2px"), envelope_transaction_path(@envelope, transaction), method: :delete, :class => "btn btn-default btn-xs") %></td>
                 <td class="text-right"><%= f.submit "Submit", :class=> "btn btn-info btn-xs", :onclick=> "value=#{transaction.id}"%></td>
               <% end %>
