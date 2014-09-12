@@ -8,7 +8,7 @@ class TransactionsController < ApplicationController
         @oldcash = @transaction.cash
         if @transaction.update(transaction_params)
           @envelope.update_attributes :cash => @envelope.cash.to_i + (@oldcash.to_i - @transaction.cash.to_i )
-          redirect_to  edit_envelope_path(@envelope), notice: 'Transaction and Envelope total were successfully updated.'
+          redirect_to  :back, notice: 'Transaction and Envelope total were successfully updated.'
         else
           redirect_to  edit_envelope_path(@envelope), notice: 'Transaction was not updated'
         end

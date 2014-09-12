@@ -7,30 +7,15 @@
 <p />
 <hr />
 
-<!--<%= render 'newtrans' %>-->
-<h2>Create Transaction</h2>
+<%= render 'newtrans' %>
 
-<%= form_for [@envelope, @envelope.transactions.build] do |f| %>
-
-  <div class="form-group">
-    <div class="input-group">
-      <div class="input-group-addon">N </div>
-    <%= f.text_field :name, :class => "input-lg form-control", "placeholder" => "expense name"  %>
-    </div>
-    </div>
-  <div class="form-group">
-    <div class="input-group">
-      <div class="input-group-addon">$ </div>
-    <%= f.text_field :cash, :class => "input-lg form-control", "placeholder" => "cost"  %>
-</div>
-</div>
-  <p>
-    <%= f.submit "Record Expense", :class=> "btn btn-info btn-lg pull-right"%>
-  </p>
-<% end %>
 
 
 <br />
 <br />
 <hr />
-<%= render 'trans' %>
+<% if @envelope.transactions.count >= 21 %>
+  <%= link_to "See Trasaction History", envelope_path(@envelope), class: 'btn btn-lg btn-default', "data-no-turbolink"=>"true" %>
+<% else %>
+  <%= render 'trans' %>
+<% end %>
